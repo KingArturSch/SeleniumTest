@@ -29,14 +29,14 @@ public class MyFirstTest {
         getClickDriverOnXpath("//*[@id='main-navbar-collapse']/ol[1]/li[2]");
 
         /**
-         * 3)Выбрать категорию - ДМС //*[@id="rgs-main-menu-insurance-dropdown"]/div[1]/div[1]/div/div[1]/div[3]/ul/li[2]/a
+         * 3)Выбрать категорию - ДМС
          */
        getClickDriverOnXpath("//*[@id='rgs-main-menu-insurance-dropdown']//*[contains(text(), 'ДМС')]");
         /**
          * 4) Проверить наличие заголовка - Добровольное медицинское страхование
          */
-        Assert.assertEquals(driver.getTitle(), "ДМС 2019 | Рассчитать стоимость добровольного медицинского страхования и оформить ДМС в Росгосстрах");
-
+        WebElement dmcTitle = driver.findElement(By.xpath("//*[contains(text(), 'добровольное медицинское страхование')]"));
+        Assert.assertTrue(dmcTitle.getText().contains("добровольное медицинское страхование"));
         /**
          * 5) Нажать на кнопку - Отправить заявку
          */
@@ -48,7 +48,8 @@ public class MyFirstTest {
         /**
          * 6) Проверить, что открылась страница , на которой присутствует текст - Заявка на добровольное медицинское страхование
          */
-        Assert.assertEquals(driver.findElement(By.xpath("//*[contains(text(),'Заявка на добровольное медицинское страхование')]")).getText(), "Заявка на добровольное медицинское страхование");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[contains(text(),'Заявка на добровольное медицинское страхование')]")).getText(),
+                "Заявка на добровольное медицинское страхование");
 
         /**
          *  7) Заполнить поля
